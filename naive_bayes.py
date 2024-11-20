@@ -34,7 +34,7 @@ data_train, data_test, results_train, results_test = train_test_split(
 
 model = GaussianNB()
 
-model.fit(data_train.values, results_train)
+model.fit(data_train, results_train)
 
 y_pred = model.predict(data_test)
 
@@ -47,6 +47,8 @@ def classify_user_input() -> bool:
         "\nInsira os dados para classificação na seguinte ordem: Region, Fresh, Milk, Grocery, Frozen, "
         "Detergents_Paper, Delicatessen \nOu caso queira parar a execução, basta entrar com o valor 0"
     )
+    # Eu falei no video que o .strip serve para transformar em lista mas eu tinha confundido com o .split
+    # O .strip serve para tirar espaçõs em branco no começo e no fim do input.
     user_input = input("Digite os valores separados por vírgula: ").strip()
     if user_input[0] == "0":
         return False
